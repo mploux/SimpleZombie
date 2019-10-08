@@ -38,12 +38,12 @@ namespace UnityStandardAssets.Effects
                     lastSoundTime = Time.time;
                 }
 
-                var col = m_CollisionEvents[i].collider;
+                var Collider = m_CollisionEvents[i].colliderComponent;
 
-                if (col.attachedRigidbody != null)
+                if (GetComponent<Collider>().attachedRigidbody != null)
                 {
                     Vector3 vel = m_CollisionEvents[i].velocity;
-                    col.attachedRigidbody.AddForce(vel*force, ForceMode.Impulse);
+                    GetComponent<Collider>().attachedRigidbody.AddForce(vel*force, ForceMode.Impulse);
                 }
 
                 other.BroadcastMessage("Extinguish", SendMessageOptions.DontRequireReceiver);
